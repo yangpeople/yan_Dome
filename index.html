@@ -528,8 +528,31 @@
         height:148px;
         margin:0 auto;
     }
+    .all{
+        width: 1896px;
+        height:2000px;
+    }
 </style>
+<script type="text/javascript">
+    (function (doc, win) {
+        var docEl = doc.documentElement,
+        // orientationchange 事件是在用户水平或者垂直翻转设备（即方向发生变化）时触发的事件。
+        // onresize 事件会在窗口或框架被调整大小时发生。
+                resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                recalc = function () {
+                    window.clientWidth = docEl.clientWidth;
+                    if (!window.clientWidth) return;
+                    docEl.style.fontSize = 40 * (window.clientWidth / 640) + 'px';
+                    window.base = 40 * (window.clientWidth / 640);
+                };
+        if (!doc.addEventListener) return;
+        win.addEventListener(resizeEvt, recalc, false);
+
+        doc.addEventListener('DOMContentLoaded', recalc, false);
+    })(document, window);
+</script>
 <body>
+<div class="all">
 <div class="top-lang">
     <img src="images/logo.png" class="top-logo"/>
     <div class="top-yan"><p>超级有味总部官方出品</p></div>
@@ -614,15 +637,15 @@
     <div class="eight-four">
     <div class="eight-rx">
         <h2>任性</h2>
-    <p>签合同，包学会，<br>不赚钱，退学费</p></div>
+    <p>签合同，包学会<br>不赚钱，退学费</p></div>
     <div class="eight-rx">
         <h2>任性</h2>
-        <p>产品技术问题，<br>保证10分钟内解答，<br>
-            不会让你无助，<br>去寻求茫茫网络。</p></div>
+        <p>产品技术问题<br>保证10分钟内解答<br>
+            不会让你无助<br>去寻求茫茫网络</p></div>
     <div class="eight-rx">
         <h2>任性</h2>
-        <p>店面经营问题，<br>保证2小时内给出完<br>
-            整实战解决方案。</p></div>
+        <p>店面经营问题<br>保证2小时内给出完<br>
+            整实战解决方案</p></div>
     <div class="eight-rx">
         <img src="images/tu11.jpg" alt="超鸡有味"/></div>
     </div>
@@ -691,6 +714,7 @@
     <p>抖音号：TEL18274153440</p>
     <p>快手号：TEL18274153440</p>
     <p>QQ:109185283</p></div>
+</div>
 </div>
 </body>
 </html>
